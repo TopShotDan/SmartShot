@@ -8,20 +8,27 @@ const useStyles = makeStyles({
     display: "flex",
     alignItems: "center",
     gap: "12px",
-    textAlign: "left",
-    paddingTop: "3px",
+    padding: "8px 16px",   // more breathing room
+    minHeight: "64px",     // makes the banner taller
     "&:hover": {
       cursor: "pointer",
     },
   },
   logo: {
-    height: "40px", // adjust this size as needed
+    height: "50px",        // was 40px → now bigger
     objectFit: "contain",
   },
   text: {
     color: "white",
-    fontWeight: "bold",
-    fontSize: "1.1rem",
+    fontFamily: "Titillium Web, Arial, sans-serif", // match your global font
+    fontWeight: 600,
+    fontSize: "1.3rem",    // slightly bigger
+  },
+  powered: {
+    color: "white",
+    fontFamily: "Titillium Web, Arial, sans-serif",
+    fontWeight: 400,
+    fontSize: "1rem",
   },
 });
 
