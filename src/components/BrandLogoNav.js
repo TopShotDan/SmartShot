@@ -5,14 +5,23 @@ import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles({
   siteNavLink: {
-    textAlign: "left",
-    paddingTop: "3px",
     display: "flex",
     alignItems: "center",
-    gap: "8px",
+    gap: "12px",
+    textAlign: "left",
+    paddingTop: "3px",
     "&:hover": {
       cursor: "pointer",
     },
+  },
+  logo: {
+    height: "40px", // adjust this size as needed
+    objectFit: "contain",
+  },
+  text: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: "1.1rem",
   },
 });
 
@@ -21,7 +30,6 @@ function BrandLogoNav({ isPrivileged = false, noLink = false }) {
   const history = useHistory();
 
   const classes = useStyles();
-  const brandString = `${SITE_NAME} (v${SITE_VERSION})`;
 
   const navigateLink = (evt) => {
     if (evt.type === "click" || evt.key === "Enter") {
@@ -30,34 +38,23 @@ function BrandLogoNav({ isPrivileged = false, noLink = false }) {
   };
 
   return (
-    <>
-      {/* specified to not link or was launched from lms as student*/}
-      {noLink || (context.jwt.length !== 0 && !isPrivileged) ? (
-        <div style={{ textAlign: "left", paddingTop: 6, display: "flex", alignItems: "center", gap: "8px" }}>
-          <img 
-            src="/topshot-logo.png" 
-            alt="Top Shot Prep Logo" 
-            style={{ height: "40px" }} 
-          />
-          <span>{brandString}</span>
-        </div>
-      ) : (
-        <div
-          role={"link"}
-          tabIndex={0}
-          onClick={navigateLink}
-          onKeyDown={navigateLink}
-          className={classes.siteNavLink}
-        >
-          <img 
-            src="/topshot-logo.png" 
-            alt="Top Shot Prep Logo" 
-            style={{ height: "40px" }} 
-          />
-          <span>{brandString}</span>
-        </div>
-      )}
-    </>
+    <div
+      role="link"
+      tabIndex={0}
+      onClick={navigateLink}
+      onKeyDown={navigateLink}
+      className={classes.siteNavLink}
+    >
+      <span className={classes.text}>Smart Shot</span>
+      <span className={classes.text} style={{ fontWeight: "normal" }}>
+        Powered by:
+      </span>
+      <img
+        src="/topshot-logo-white.png" // place your black/white logo in /public
+        alt="Top Shot Prep Logo"
+        className={classes.logo}
+      />
+    </div>
   );
 }
 
