@@ -10,6 +10,7 @@ const useStyles = makeStyles({
     gap: "12px",
     padding: "8px 16px",   // more breathing room
     minHeight: "64px",     // makes the banner taller
+    flexWrap: "wrap",
     "&:hover": {
       cursor: "pointer",
     },
@@ -47,21 +48,19 @@ function BrandLogoNav({ isPrivileged = false, noLink = false }) {
   return (
     <div
       role="link"
-      tabIndex={0}
-      onClick={navigateLink}
-      onKeyDown={navigateLink}
-      className={classes.siteNavLink}
-    >
-      <span className={classes.text}>Smart Shot</span>
-      <span className={classes.text} style={{ fontWeight: "normal" }}>
-        Powered by:
-      </span>
-      <img
-        src="/topshot-logo-white.png" // place your black/white logo in /public
-        alt="Top Shot Prep Logo"
-        className={classes.logo}
-      />
-    </div>
+  tabIndex={0}
+  onClick={navigateLink}
+  onKeyDown={navigateLink}
+  className={classes.siteNavLink}
+>
+  <span className={classes.text}>Smart Shot</span>
+  <span className={classes.powered}>Powered by:</span>
+  <img
+    src="/topshot-logo-white.png"
+    alt="Top Shot Prep Logo"
+    className={classes.logo}
+  />
+</div>
   );
 }
 
