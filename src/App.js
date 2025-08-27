@@ -69,7 +69,26 @@ let theme = createTheme({
   typography: {
     fontFamily: "Titillium Web, Arial, sans-serif",
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: "8px",
+          textTransform: "none",
+        },
+        containedPrimary: {
+          backgroundColor: "#2E8B57", // Emerald green
+          color: "#fff",
+        },
+        containedSecondary: {
+          backgroundColor: "#4682B4", // Steel blue
+          color: "#fff",
+        },
+      },
+    },
+  },
 });
+
 theme = responsiveFontSizes(theme);
 
 const queryParamToContext = {
