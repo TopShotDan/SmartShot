@@ -51,7 +51,25 @@ import BrowserStorage from "./util/browserStorage";
 
 loadFirebaseEnvConfig(config);
 
-let theme = createTheme();
+let theme = createTheme({
+  palette: {
+    primary: {
+      main: "#2E8B57",   // Emerald green
+    },
+    secondary: {
+      main: "#4682B4",   // Steel blue
+    },
+    warning: {
+      main: "#FFD700",   // Golden yellow (or swap for #EAC435 if you like)
+    },
+    background: {
+      default: "#F5DEB3", // Soft beige
+    },
+  },
+  typography: {
+    fontFamily: "Titillium Web, Arial, sans-serif",
+  },
+});
 theme = responsiveFontSizes(theme);
 
 const queryParamToContext = {
