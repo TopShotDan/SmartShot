@@ -127,16 +127,10 @@ class Platform extends React.Component {
     
     async selectLesson(lesson, updateServer=true) {
         const context = this.context;
-        console.debug("lesson: ", context)
-        console.debug("update server: ", updateServer)
-        console.debug("context: ", context)
         if (!this._isMounted) {
-            console.debug("component not mounted, returning early (1)");
             return;
         }
         if (this.isPrivileged) {
-            // from canvas or other LTI Consumers
-            console.log("valid privilege")
             let err, response;
             [err, response] = await to(
                 fetch(`${MIDDLEWARE_URL}/setLesson`, {
@@ -151,75 +145,11 @@ class Platform extends React.Component {
                 })
             );
             if (err || !response) {
-                toast.error(
-                    `Error setting lesson for assignment "${this.user.resource_link_title}"`
-                );
-                console.debug(err, response);
                 return;
             } else {
                 if (response.status !== 200) {
-                    switch (response.status) {
-                        case 400:
-                            const responseText = await response.text();
-                            let [message, ...addInfo] = responseText.split("|");
-                            if (
-                                Array.isArray(addInfo) &&
-                                addInfo[0].length > 1
-                            ) {
-                                addInfo = JSON.parse(addInfo[0]);
-                            }
-                            switch (message) {
-                                case "resource_already_linked":
-                                    toast.error(
-                                        `${addInfo.from} has already been linked to lesson ${addInfo.to}. Please create a new assignment.`,
-                                        {
-                                            toastId:
-                                                ToastID.set_lesson_duplicate_error.toString(),
-                                        }
-                                    );
-                                    return;
-                                default:
-                                    toast.error(`Error: ${responseText}`, {
-                                        toastId:
-                                            ToastID.expired_session.toString(),
-                                        closeOnClick: true,
-                                    });
-                                    return;
-                            }
-                        case 401:
-                            toast.error(
-                                `Your session has either expired or been invalidated, please reload the page to try again.`,
-                                {
-                                    toastId: ToastID.expired_session.toString(),
-                                }
-                            );
-                            this.props.history.push("/session-expired");
-                            return;
-                        case 403:
-                            toast.error(
-                                `You are not authorized to make this action. (Are you an instructor?)`,
-                                {
-                                    toastId: ToastID.not_authorized.toString(),
-                                }
-                            );
-                            return;
-                        default:
-                            toast.error(
-                                `Error setting lesson for assignment "${this.user.resource_link_title}." If reloading does not work, please contact us.`,
-                                {
-                                    toastId:
-                                        ToastID.set_lesson_unknown_error.toString(),
-                                }
-                            );
-                            return;
-                    }
+                    return;
                 } else {
-                    toast.success(
-                        `Successfully linked assignment "${this.user.resource_link_title}" to lesson ${lesson.id} "${lesson.topics}"`,
-                        {
-                            toastId: ToastID.set_lesson_success.toString(),
-                        }
-                    );
                     const responseText = await response.text();
                     let [message, ...addInfo] = responseText.split("|");
                     this.props.history.push(
@@ -243,14 +173,9 @@ class Platform extends React.Component {
             loadLessonProgress(),
         ]);
         if (!this._isMounted) {
-            console.debug("component not mounted, returning early (2)");
             return;
         }
         if (prevCompletedProbs) {
-            console.debug(
-                "student has already made progress w/ problems in this lesson before",
-                prevCompletedProbs
-            );
             this.completedProbs = new Set(prevCompletedProbs);
         }
         this.setState(
@@ -259,10 +184,7 @@ class Platform extends React.Component {
                     this.context ? this.context : context
                 ),
             },
-            () => {
-                //console.log(this.state.currProblem);
-                //console.log(this.lesson);
-            }
+            () => {}
         );
     }
 
@@ -282,13 +204,7 @@ class Platform extends React.Component {
         );
         let chosenProblem;
 
-        console.debug(
-            "Platform.js: sample of available problems",
-            problems.slice(0, 10)
-        );
-
         for (const problem of problems) {
-            // Calculate the mastery for this problem
             let probMastery = 1;
             let isRelevant = false;
             for (const step of problem.steps) {
@@ -297,15 +213,13 @@ class Platform extends React.Component {
                 }
                 for (const kc of step.knowledgeComponents) {
                     if (typeof context.bktParams[kc] === "undefined") {
-                        console.log("BKT Parameter " + kc + " does not exist.");
                         continue;
                     }
                     if (kc in this.lesson.learningObjectives) {
                         isRelevant = true;
                     }
-                    // Multiply all the mastery priors
                     if (!(kc in context.bktParams)) {
-                        console.log("Missing BKT parameter: " + kc);
+                        continue;
                     }
                     probMastery *= context.bktParams[kc].probMastery;
                 }
@@ -317,23 +231,15 @@ class Platform extends React.Component {
             }
         }
 
-        console.debug(
-            `Platform.js: available problems ${problems.length}, completed problems ${this.completedProbs.size}`
-        );
         chosenProblem = context.heuristic(problems, this.completedProbs);
-        console.debug("Platform.js: chosen problem", chosenProblem);
 
         const objectives = Object.keys(this.lesson.learningObjectives);
-        console.debug("Platform.js: objectives", objectives);
         let score = objectives.reduce((x, y) => {
             return x + context.bktParams[y].probMastery;
         }, 0);
         score /= objectives.length;
         this.displayMastery(score);
-        //console.log(Object.keys(context.bktParams).map((skill) => (context.bktParams[skill].probMastery <= this.lesson.learningObjectives[skill])));
 
-        // There exists a skill that has not yet been mastered (a True)
-        // Note (number <= null) returns false
         if (
             !Object.keys(context.bktParams).some(
                 (skill) =>
@@ -341,13 +247,9 @@ class Platform extends React.Component {
             )
         ) {
             this.setState({ status: "graduated" });
-            console.log("Graduated");
             return null;
         } else if (chosenProblem == null) {
-            console.debug("no problems were chosen");
-            // We have finished all the problems
             if (this.lesson && !this.lesson.allowRecycle) {
-                // If we do not allow problem recycle then we have exhausted the pool
                 this.setState({ status: "exhausted" });
                 return null;
             } else {
@@ -361,8 +263,6 @@ class Platform extends React.Component {
 
         if (chosenProblem) {
             this.setState({ currProblem: chosenProblem, status: "learning" });
-            // console.log("Next problem: ", chosenProblem.id);
-            console.debug("problem information", chosenProblem);
             this.context.firebase.startedProblem(
                 chosenProblem.id,
                 chosenProblem.courseName,
@@ -370,8 +270,6 @@ class Platform extends React.Component {
                 this.lesson.learningObjectives
             );
             return chosenProblem;
-        } else {
-            console.debug("still no chosen problem..? must be an error");
         }
     };
 
@@ -421,24 +319,28 @@ class Platform extends React.Component {
                 }}
             >
                 <AppBar position="static">
-                    <Toolbar>
+                    <Toolbar style={{ minHeight: "80px" }}> 
                         <Grid
                             container
                             spacing={0}
                             role={"navigation"}
                             alignItems={"center"}
                         >
-                            <Grid item xs={3} key={1}>
+                            {/* Left: Logo + Title */}
+                            <Grid item xs={4} key={1}>
                                 <BrandLogoNav
                                     isPrivileged={this.isPrivileged}
                                 />
                             </Grid>
-                            <Grid item xs={6} key={2}>
+
+                            {/* Center: Lesson title */}
+                            <Grid item xs={4} key={2}>
                                 <div
                                     style={{
                                         textAlign: "center",
-                                        textAlignVertical: "center",
-                                        paddingTop: "3px",
+                                        paddingTop: "6px",
+                                        fontSize: "1.2rem",
+                                        fontWeight: "500",
                                     }}
                                 >
                                     {Boolean(
@@ -452,11 +354,14 @@ class Platform extends React.Component {
                                         : ""}
                                 </div>
                             </Grid>
-                            <Grid item xs={3} key={3}>
+
+                            {/* Right: Mastery / student name */}
+                            <Grid item xs={4} key={3}>
                                 <div
                                     style={{
                                         textAlign: "right",
-                                        paddingTop: "3px",
+                                        paddingTop: "6px",
+                                        fontSize: "0.95rem",
                                     }}
                                 >
                                     {this.state.status !== "courseSelection" &&
@@ -464,7 +369,7 @@ class Platform extends React.Component {
                                     (this.lesson.showStuMastery == null ||
                                         this.lesson.showStuMastery)
                                         ? this.studentNameDisplay +
-                                        translate('platform.Mastery') +
+                                          translate('platform.Mastery') +
                                           Math.round(this.state.mastery * 100) +
                                           "%"
                                         : ""}
@@ -473,6 +378,7 @@ class Platform extends React.Component {
                         </Grid>
                     </Toolbar>
                 </AppBar>
+
                 {this.state.status === "courseSelection" ? (
                     <LessonSelectionWrapper
                         selectLesson={this.selectLesson}
