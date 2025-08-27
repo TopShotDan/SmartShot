@@ -1,6 +1,6 @@
 const SESSION_SYSTEM = "SEMESTER"
-const SITE_NAME = "OATutor"
-const CONTENT_SOURCE = "oatutor"
+const SITE_NAME = "Smart Shot"
+const CONTENT_SOURCE = "Smart Shot"
 
 module.exports = {
     SESSION_SYSTEM,
