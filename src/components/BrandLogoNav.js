@@ -2,7 +2,10 @@ import React, { useContext } from "react";
 import { ThemeContext } from "../config/config";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core";
-import {ReactComponent as Logo} from "../assets/Logo.svg";
+import { SITE_NAME } from "../config/config";
+import logoSrc from "../assets/LogoCrest.png";
+
+const Logo = ({ className }) => <img src={logoSrc} alt={SITE_NAME} className={className} />;
 
 const useStyles = makeStyles({
     "siteNavLink": {
@@ -13,7 +16,8 @@ const useStyles = makeStyles({
         }
     },
     "logo": {
-        height: "28px",
+        height: "40px",
+        display: "block",
         "&:hover": {
             cursor: "pointer"
         }

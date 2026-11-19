@@ -13,47 +13,39 @@ const About = () => {
         <h2>
             About {SITE_NAME}
         </h2>
-        Open Adaptive Tutor ({SITE_NAME}) is an open-source adaptive tutoring system based on Intelligent Tutoring System (ITS) Principles.
+        {SITE_NAME} is a free practice tool from <a href="https://topshotprep.com" target={"_blank"} rel={"noreferrer"}>Top Shot Prep</a>.
+        It is built on OATutor (Open Adaptive Tutor), an open-source adaptive tutoring system based on Intelligent Tutoring System (ITS) principles.
+        {SITE_NAME} is an independent project and is not affiliated with or endorsed by UC Berkeley or the CAHL Research Lab.
         <h3>Question Input Types & Shortcuts</h3>
 
-        To learn more about how to fill in and submit {SITE_NAME} assignments,<span> </span>
+        To learn more about how to fill in and submit assignments,<span> </span>
         <a href={HELP_DOCUMENT} target={"_blank"} rel={"noreferrer"}>visit our help document</a>.
 
-        <h3>Contributors</h3>
-        
+        <h3>Credits</h3>
+
         OATutor was created and developed by a dedicated team from the Computational Approaches to Human Learning (CAHL) Research Lab at the UC Berkeley School of Education.
-        
-        <h3>Learn more</h3>
+        Practice problems are adapted from <a href="https://openstax.org/" target={"_blank"} rel={"noreferrer"}>OpenStax</a> textbooks, with hints and scaffolds authored by the OATutor Project.
+
+        <h3>Learn more about OATutor</h3>
         <ul>
-            <li>Visit <a href="https://www.oatutor.io/" target={"_blank"} rel={"noreferrer"}>https://www.oatutor.io/</a> to explore more about OATutor, our mission, and how it can benefit you.</li>
-            <li>Read our <a href="https://dl.acm.org/doi/10.1145/3544548.3581574" target={"_blank"} rel={"noreferrer"}>research paper</a> to learn more about the scientific foundation and methodology behind OATutor.</li>
+            <li>Visit <a href="https://www.oatutor.io/" target={"_blank"} rel={"noreferrer"}>https://www.oatutor.io/</a> to explore more about OATutor.</li>
+            <li>Read the <a href="https://dl.acm.org/doi/10.1145/3544548.3581574" target={"_blank"} rel={"noreferrer"}>OATutor research paper</a> to learn more about the scientific foundation and methodology behind it.</li>
         </ul>
 
         <h3>Accessibility Standards</h3>
 
-        <p>
-            {SITE_NAME} strives to ensure an easy and accessible experience for all users, regardless of disabilities.
-            The site, {SITE_NAME}, is built with the most up-to-date HTML5 and CSS3 standards; all whilst complying with
-            W3C's Web Accessibility Guidelines (WCAG) and Section 508 guidelines.
-        </p>
-
         <p className={classes["pt-2"]}>
-            The Voluntary Product Accessibility Template, or VPAT, is a tool that administrators and decision-makers can
-            use to evaluate {SITE_NAME}{SITE_NAME.match(/s$/i) ? "'" : "'s"} conformance with the accessibility
-            standards under Section 508 of the Rehabilitation Act.
-        </p>
-
-        <p className={classes["pt-2"]}>
-            You may read our most recent publication of our Voluntary Product Accessibility Template at this
-            url:<span> </span>
+            The original OATutor platform was evaluated for Section 508 / WCAG conformance. You may read the OATutor
+            Voluntary Product Accessibility Template (VPAT) at this url:<span> </span>
             <a href={VPAT_LINK} target={"_blank"} rel={"noreferrer"}>{VPAT_LINK.match(/\/[^/]*$/)[0].substr(1)}</a>
         </p>
 
         <Spacer height={24 * 1}/>
 
         <sub>
-            <p>OATutor code is licensed under a MIT Open Source License, with its adaptive learning content made available under a CC BY 4.0 license.</p> 
-            <p>© {currentYear}, CAHL Research Lab, UC Berkley School of Education.</p>
+            <p>OATutor code is licensed under the MIT Open Source License, with its adaptive learning content made available under a CC BY 4.0 license.</p>
+            <p>OATutor © 2023, Zachary A. Pardos, CAHL Research Lab, UC Berkeley School of Education.</p>
+            <p>{SITE_NAME} changes © {currentYear} Top Shot Prep.</p>
         </sub>
     </>
 }

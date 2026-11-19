@@ -41,7 +41,6 @@ import ViewAllProblems from "./components/problem-layout/ViewAllProblems";
 import { ResponsiveProvider } from "./util/ResponsiveContext";
 
 // ### BEGIN CUSTOMIZABLE IMPORTS ###
-import config from "./config/firebaseConfig.js";
 import skillModel from "./content-sources/oatutor/skillModel.json";
 import defaultBKTParams from "./content-sources/oatutor/bkt-params/defaultBKTParams.json";
 import experimentalBKTParams from "./content-sources/oatutor/bkt-params/experimentalBKTParams.json";
@@ -51,6 +50,8 @@ import BrowserStorage from "./util/browserStorage";
 import tableOfContents from "@components/tableOfContents";
 // ### END CUSTOMIZABLE IMPORTS ###
 
+// SmartShot: Firebase logging is off (see ENABLE_FIREBASE in config.js), so no private firebaseConfig.js is needed.
+const config = {};
 loadFirebaseEnvConfig(config);
 
 const queryParamToContext = {

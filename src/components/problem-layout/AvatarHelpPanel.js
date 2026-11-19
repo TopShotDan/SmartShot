@@ -18,14 +18,14 @@ const styles = (theme) => ({
         marginBottom: 7,
         borderRadius: 14,
         border: '2px solid rgba(76, 125, 159, 0.35)',
-        color: '#3f7091',
+        color: '#0D3A28',
         backgroundColor: '#fff',
         fontWeight: 800,
         textTransform: 'none',
         fontSize: 16,
         '&:hover': {
             backgroundColor: '#eef4fa',
-            borderColor: '#4c7d9f',
+            borderColor: '#124D36',
         },
     },
     hintButtonIcon: {

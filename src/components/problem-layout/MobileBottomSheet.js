@@ -14,7 +14,7 @@ const CLOSE_DRAG_PX = 110;
 const BADGE_COLORS = {
     border: '#a3c5de',
     bg: '#ffffff',
-    color: '#3f7091',
+    color: '#0D3A28',
 };
 
 /**
@@ -256,7 +256,7 @@ export default function MobileBottomSheet({
                                             margin: 0,
                                             fontSize: 20,
                                             fontWeight: 700,
-                                            color: '#3f7091',
+                                            color: '#0D3A28',
                                         }}
                                     >
                                         {title}

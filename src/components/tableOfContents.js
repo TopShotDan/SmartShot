@@ -400,9 +400,9 @@ const TableOfContents = ({
                         marginRight: isSelected ? "-16px" : "24px",
                         cursor: "pointer",
                         backgroundColor: isSelected ? "#E9F4FB" : "#ffffff",
-                        borderLeft: isSelected ? "4px solid #4C7D9F" : "4px solid #EBEFF2",
+                        borderLeft: isSelected ? "4px solid #124D36" : "4px solid #EBEFF2",
                         fontWeight: isSelected ? 600 : 400,
-                        color: isSelected ? "#4C7D9F" : "#4A4E58",
+                        color: isSelected ? "#124D36" : "#4A4E58",
                       }}
                     >
                       <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>

@@ -416,7 +416,7 @@ const styles = (theme) => ({
     heading: {
         fontSize: theme.typography.pxToRem(15),
         fontWeight: 600,
-        color: "#3f7091",
+        color: "#0D3A28",
     },
     accordion: {
         backgroundColor: "#ffffff",

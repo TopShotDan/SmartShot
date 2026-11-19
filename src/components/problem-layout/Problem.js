@@ -1270,7 +1270,7 @@ class Problem extends React.Component {
             hintPromoEligible && !hideHintPromoDueToOverlap;
         const showHintCardChrome = isHintPortalOpen || hintPromoVisible;
 
-        const hintThemePrimaryDark = "#3f7091";
+        const hintThemePrimaryDark = "#0D3A28";
         const hintThemeSurface = "#eef4fa";
         const hintThemePale = "#a3c5de";
         const hintThemeAccent = "#EF9F27";
@@ -1318,7 +1318,7 @@ class Problem extends React.Component {
         const cardStyle = {
             background: isHintPortalOpen ? hintThemeSurface : PAGE_BG,
             color: "#222",
-            border: showHintCardChrome ? `1px solid #4c7d9f` : "none",
+            border: showHintCardChrome ? `1px solid #124D36` : "none",
             padding: isHintPortalOpen
                 ? "8px 10px"
                 : hintPromoVisible

@@ -285,7 +285,7 @@ class LessonSelection extends React.Component {
                                 <Button className={classes.button} size="small"
                                         style={{ 
                                             width: "100%", 
-                                            color: "#3F7091",
+                                            color: "#0D3A28",
                                             backgroundColor: "transparent",
                                             border: "1px solid #4F86A8",
                                             boxShadow: "none"
@@ -295,7 +295,7 @@ class LessonSelection extends React.Component {
                                 <Button className={classes.button} size="small"
                                     style={{ 
                                         width: "100%", 
-                                        color: "#3F7091",
+                                        color: "#0D3A28",
                                         backgroundColor: "transparent",
                                         border: "1px solid #4F86A8",
                                         boxShadow: "none"

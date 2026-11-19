@@ -1359,7 +1359,7 @@ class Platform extends React.Component {
                               height: 32,
                               padding: "0 10px",
                               boxShadow: "none",
-                              color: "#3F7091",
+                              color: "#0D3A28",
                               fontSize: 13,
                               fontWeight: 600,
                               textTransform: "none",

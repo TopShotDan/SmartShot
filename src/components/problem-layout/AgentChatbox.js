@@ -45,8 +45,8 @@ import { boundChatMessages, historyPageMessages } from '../../util/chatHistory.j
 import AnthropologyReviewStarters from './AnthropologyReviewStarters';
 
 const CHAT_THEME = {
-    primary: '#4c7d9f',
-    primaryDark: '#3f7091',
+    primary: '#124D36',
+    primaryDark: '#0D3A28',
     accent: '#ffc300',
     pale: '#a3c5de',
     surface: '#eef4fa',

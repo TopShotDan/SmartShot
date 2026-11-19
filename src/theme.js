@@ -4,11 +4,11 @@ let theme = createTheme({
   palette: {
     type: 'light',
     primary: {
-      main: '#4C7D9F', //dark blue color
+      main: '#124D36', //dark blue color
       contrastText: '#ffffff',
     },
     secondary: {
-      main: '#ecbc5c', //yellow
+      main: '#FFD900', //yellow
     }, 
     background: {
       default: '#F6F8FA', //light blue-white
@@ -48,14 +48,14 @@ let theme = createTheme({
         textTransform: 'none',
       },
       containedPrimary: {
-        backgroundColor: '#4C7D9F',
+        backgroundColor: '#124D36',
         color: '#fff',
         '&:hover': {
-          backgroundColor: '#3F7091',
+          backgroundColor: '#0D3A28',
         },
         '&:active': {
-          backgroundColor: '#4C7D9F',
-          border: '1px solid #326691',
+          backgroundColor: '#124D36',
+          border: '1px solid #0A2E20',
         },
         '&:disabled': {
           backgroundColor: '#D1D1D1',
@@ -66,15 +66,15 @@ let theme = createTheme({
       
       containedSecondary: {
         backgroundColor: '#FFFFFF', 
-        border: '1px solid #81ADCD',
-        color: '#3F7092',
+        border: '1px solid #7FB3B9',
+        color: '#0D3A28',
         boxShadow: 'none',
         '&:hover': {
-          backgroundColor: 'rgba(128, 174, 206, 0.10)',
+          backgroundColor: 'rgba(31, 117, 128, 0.10)',
           boxShadow: 'none',
         },
         '&.active': {
-          backgroundColor: '#80AECE40',
+          backgroundColor: '#1F758040',
           boxShadow: 'none',
         },
         '&:disabled': {
