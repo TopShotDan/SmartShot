@@ -103,7 +103,7 @@ class LessonSelection extends React.Component {
                 <Paper className={classes.smartCard} elevation={0}
                        role="link" tabIndex={0} aria-label={`Start ${lesson.name || lesson.id}`}
                        {...onActivate(open)}>
-                    <div className={classes.smartCardStrip} style={{ backgroundColor: '#124D36' }} />
+                    <div className={classes.smartCardStrip} style={{ backgroundColor: '#FFD900' }} />
                     {showProblemsLink && !isFullChatLesson(lesson) && (
                         <IconButton
                             size="small"
@@ -247,7 +247,7 @@ class LessonSelection extends React.Component {
 
         return (
             <>
-                <Box display="flex" justifyContent="center" style={{ backgroundColor: '#F4F6F3' }}>
+                <Box display="flex" justifyContent="center" style={{ backgroundColor: '#FFF7D8' }}>
                     <Box width="100%" maxWidth={1200} px={isMobile ? 2 : 4} role={"main"}>
                         {selectionMode === "course" ? this.renderCourses() : this.renderLessons()}
 

@@ -1255,7 +1255,7 @@ class Platform extends React.Component {
 
         <div
           style={{
-            backgroundColor: isOfficeHours ? "#EDF4EF" : "#F4F6F3",
+            backgroundColor: isOfficeHours ? "#EDF4EF" : "#FFF7D8",
             paddingBottom: isOfficeHours ? 0 : 20,
             display: "flex",
             flexDirection: "column",
@@ -1411,7 +1411,7 @@ class Platform extends React.Component {
           >
             {this.state.status === "learning" && !isOfficeHours ? (
               <AppBar position="sticky"
-                      style={{ top: progressStickyTop, backgroundColor: "#F4F6F3", boxShadow: "none", zIndex: 3 }}>
+                      style={{ top: progressStickyTop, backgroundColor: "#FFF7D8", boxShadow: "none", zIndex: 3 }}>
                 <Toolbar disableGutters style={{ minHeight: isMobile ? 64 : 80, paddingLeft: isMobile ? 8 : 16, paddingRight: isMobile ? 8 : 32 }}>
                   <Grid container spacing={0} role="progress-bar" alignItems="center" style={{ width: "100%" }}>
                     {showToc && !this.state.drawerOpen && !isMobile && (
