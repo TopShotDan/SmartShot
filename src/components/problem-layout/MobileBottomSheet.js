@@ -12,7 +12,7 @@ const SHEET_MS = 280;
 const CLOSE_DRAG_PX = 110;
 
 const BADGE_COLORS = {
-    border: '#a3c5de',
+    border: '#A9CDB8',
     bg: '#ffffff',
     color: '#0D3A28',
 };

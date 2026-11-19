@@ -39,7 +39,7 @@ import { LocalizationConsumer } from "../util/LocalizationContext.js";
 
 import confetti from "canvas-confetti";
 
-import userIcon from "../assets/UserThumb.svg";
+import { getCourseDisplayName } from "../config/smartshotCourses.js";
 import IconButton from "@material-ui/core/IconButton";
 import HelpOutlineOutlinedIcon from "@material-ui/icons/HelpOutlineOutlined";
 import FeedbackOutlinedIcon from "@material-ui/icons/FeedbackOutlined";
@@ -1255,7 +1255,7 @@ class Platform extends React.Component {
 
         <div
           style={{
-            backgroundColor: isOfficeHours ? "#eef4fa" : "#F6F6F6",
+            backgroundColor: isOfficeHours ? "#EDF4EF" : "#F4F6F3",
             paddingBottom: isOfficeHours ? 0 : 20,
             display: "flex",
             flexDirection: "column",
@@ -1270,7 +1270,7 @@ class Platform extends React.Component {
           }}
         >
           {/* Top bar */}
-          <AppBar position="fixed" style={{ backgroundColor: "#FFFFFF" }}>
+          <AppBar position="fixed" color="primary" style={{ boxShadow: "0 2px 8px rgba(13, 58, 40, 0.18)" }}>
             <Toolbar className={isMobile ? classes.mobileCompactToolbar : undefined}>
               {isMobile ? (
                 <div style={{ display: "flex", alignItems: "center", width: "100%", gap: 4, minWidth: 0 }}>
@@ -1280,29 +1280,28 @@ class Platform extends React.Component {
                       onClick={() => this.toggleDrawer(!this.state.drawerOpen)}
                       size="small"
                     >
-                      <img src={ToCButton} alt="Table of Contents" style={{ width: 24, height: 24 }} />
+                      <img src={ToCButton} alt="Table of Contents" style={{ width: 24, height: 24, filter: "brightness(0) invert(1)" }} />
                     </IconButton>
                   )}
                   <BrandLogoNav isPrivileged={this.isPrivileged} />
                   {inLesson && mobileCourseTitle && (
                     <div
                       className={classes.mobileCourseTitle}
-                      title={mobileCourseTitle}
-                      style={{ fontSize: 12, color: "#667085", marginLeft: 4 }}
+                      title={getCourseDisplayName(mobileCourseTitle)}
+                      style={{ fontSize: 12, color: "rgba(255, 255, 255, 0.8)", marginLeft: 4 }}
                     >
-                      {mobileCourseTitle}
+                      {getCourseDisplayName(mobileCourseTitle)}
                     </div>
                   )}
                   <div style={{ display: "flex", alignItems: "center", marginLeft: "auto", flexShrink: 0 }}>
                     <IconButton aria-label="about" title={`About ${SITE_NAME}`} onClick={this.togglePopup} size="small">
-                      <HelpOutlineOutlinedIcon htmlColor={"#344054"} style={{ fontSize: 28 }} />
+                      <HelpOutlineOutlinedIcon htmlColor={"#FFFFFF"} style={{ fontSize: 28 }} />
                     </IconButton>
                     {this.state.status === "learning" && !isOfficeHours && (
                       <IconButton aria-label="report problem" onClick={this.toggleFeedback} title={"Report Problem"} size="small">
-                        <FeedbackOutlinedIcon htmlColor={"#344054"} style={{ fontSize: 26 }} />
+                        <FeedbackOutlinedIcon htmlColor={"#FFFFFF"} style={{ fontSize: 26 }} />
                       </IconButton>
                     )}
-                    <img src={userIcon} alt="User Icon" style={{ width: 28, height: 28, marginLeft: 4 }} />
                   </div>
                   <Popup isOpen={showPopup} onClose={this.togglePopup}>
                     <About />
@@ -1312,17 +1311,18 @@ class Platform extends React.Component {
                 <div role={"navigation"} style={{ display: "flex", alignItems: "center", width: "100%", gap: 16, minWidth: 0 }}>
                   <BrandLogoNav isPrivileged={this.isPrivileged} />
                   {!isOfficeHours && tocCourseName && (
-                    <div style={{ display: "flex", alignItems: "center", gap: 2, minWidth: 0, color: "#344054" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 2, minWidth: 0, color: "#FFFFFF",
+                                  borderLeft: "1px solid rgba(255, 255, 255, 0.25)", paddingLeft: 12 }}>
                       {!this.isFromCanvas && (
                         <IconButton onClick={this.handleHierarchyBack} aria-label="Back" size="small">
-                          <ChevronLeftIcon htmlColor={"#344054"} />
+                          <ChevronLeftIcon htmlColor={"#FFFFFF"} />
                         </IconButton>
                       )}
                       <div
-                        title={tocCourseName}
+                        title={getCourseDisplayName(tocCourseName)}
                         style={{ fontWeight: 600, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}
                       >
-                        {tocCourseName}
+                        {getCourseDisplayName(tocCourseName)}
                       </div>
                     </div>
                   )}
@@ -1333,7 +1333,7 @@ class Platform extends React.Component {
                       gap: "9px",
                       marginLeft: "auto",
                       flexShrink: 0,
-                      color: "#344054",
+                      color: "#FFFFFF",
                     }}
                   >
                     {/* "Report a problem" and "?" grouped in one small box */}
@@ -1345,7 +1345,7 @@ class Platform extends React.Component {
                           gap: 2,
                           padding: 4,
                           backgroundColor: "#FFFFFF",
-                          border: "1px solid #DFE8EE",
+                          border: "1px solid #DDE7E1",
                           borderRadius: 12,
                           boxShadow: "0 1px 3px rgba(15, 46, 95, 0.06)",
                         }}
@@ -1363,7 +1363,7 @@ class Platform extends React.Component {
                               fontSize: 13,
                               fontWeight: 600,
                               textTransform: "none",
-                              backgroundColor: this.state.showFeedback ? "#E9F4FB" : "transparent",
+                              backgroundColor: this.state.showFeedback ? "#E8F1EC" : "transparent",
                             }}
                           >
                             Report a problem
@@ -1380,8 +1380,6 @@ class Platform extends React.Component {
                         </IconButton>
                       </div>
                     )}
-                    <img src={userIcon} alt="User Icon" />
-                    <div style={{ fontWeight: 600 }}>{this.studentNameDisplay}</div>
                   </div>
                   <Popup isOpen={showPopup} onClose={this.togglePopup}>
                     <About />
@@ -1413,7 +1411,7 @@ class Platform extends React.Component {
           >
             {this.state.status === "learning" && !isOfficeHours ? (
               <AppBar position="sticky"
-                      style={{ top: progressStickyTop, backgroundColor: "#F6F6F6", boxShadow: "none", zIndex: 3 }}>
+                      style={{ top: progressStickyTop, backgroundColor: "#F4F6F3", boxShadow: "none", zIndex: 3 }}>
                 <Toolbar disableGutters style={{ minHeight: isMobile ? 64 : 80, paddingLeft: isMobile ? 8 : 16, paddingRight: isMobile ? 8 : 32 }}>
                   <Grid container spacing={0} role="progress-bar" alignItems="center" style={{ width: "100%" }}>
                     {showToc && !this.state.drawerOpen && !isMobile && (

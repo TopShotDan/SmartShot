@@ -24,11 +24,9 @@ import Popup from '@components/Popup/Popup';
 import About from '../../pages/Posts/About';
 import ProblemWrapper from '@components/problem-layout/ProblemWrapper';
 import { findLessonById, ThemeContext, SHOW_COPYRIGHT, SITE_NAME } from '../../config/config.js';
-import { getStudentDisplayName } from '../../util/getStudentDisplayName';
 import { CONTENT_SOURCE } from '@common/global-config';
 import withTranslation from '../../util/withTranslation.js';
 
-import userIcon from "../../assets/UserThumb.svg";
 import FeedbackOutlinedIcon from "@material-ui/icons/FeedbackOutlined";
 import leftArrow from "../../assets/chevron-left.svg";
 
@@ -111,8 +109,6 @@ const ViewAllProblems = ({ translate, history }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [seed] = useState(() => Date.now().toString());
 
-  const studentNameDisplay = getStudentDisplayName(context, translate('platform.NotLoggedIn'), translate('platform.LoggedIn'));
-
   // no-op handlers for ProblemWrapper
   const displayMastery = () => {};
   const problemComplete = () => {};
@@ -179,37 +175,11 @@ const ViewAllProblems = ({ translate, history }) => {
     <Box className={classes.root}>
 
 
-      <AppBar position="static" style = {{backgroundColor: '#FFFFFF'}}>
+      <AppBar position="static" color="primary">
         <Toolbar>
-          <Grid 
-            container 
-            spacing={0}
-            role={"navigation"}
-            alignItems={"center"}            
-          >
-
-            <Grid item xs={3}><BrandLogoNav /></Grid>
-            <Grid item xs={6} style={{ textAlign: 'center' }}> </Grid>
-            <Grid xs = {3} item key={3}>
-                <div
-                    style={{
-                        display: "flex",
-                        justifyContent: "flex-end",
-                        alignItems: "center", 
-                        gap: "9px",
-                        color: "#344054",
-                    }}
-                >
-                    <img src={userIcon} alt="User Icon" />
-                    {!isMobile && (
-                    <div style={{ fontWeight: 600 }}>
-                        {studentNameDisplay}
-                    </div>
-                    )}
-                </div>
-            </Grid>
-
-          </Grid>
+          <div role={"navigation"} style={{ display: "flex", alignItems: "center", width: "100%" }}>
+            <BrandLogoNav />
+          </div>
         </Toolbar>
       </AppBar>
 

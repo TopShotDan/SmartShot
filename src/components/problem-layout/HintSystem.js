@@ -420,7 +420,7 @@ const styles = (theme) => ({
     },
     accordion: {
         backgroundColor: "#ffffff",
-        border: "1px solid #a3c5de",
+        border: "1px solid #A9CDB8",
         borderRadius: 6,
         marginBottom: 6,
         boxShadow: "none",
@@ -430,7 +430,7 @@ const styles = (theme) => ({
         },
         "&.Mui-disabled": {
             backgroundColor: "#f5f8fb",
-            borderColor: "#d4e3ef",
+            borderColor: "#D3E4DA",
         },
     },
     accordionExpanded: {
@@ -442,7 +442,7 @@ const styles = (theme) => ({
         borderRadius: 6,
         "&.Mui-expanded": {
             minHeight: 44,
-            backgroundColor: "#eef4fa",
+            backgroundColor: "#EDF4EF",
             borderRadius: "6px 6px 0 0",
         },
         "& .MuiAccordionSummary-content": {
@@ -450,8 +450,8 @@ const styles = (theme) => ({
         },
     },
     accordionDetails: {
-        backgroundColor: "#eef4fa",
-        borderTop: "1px solid #a3c5de",
+        backgroundColor: "#EDF4EF",
+        borderTop: "1px solid #A9CDB8",
         borderRadius: "0 0 6px 6px",
         paddingTop: theme.spacing(1.5),
         paddingBottom: theme.spacing(1.5),

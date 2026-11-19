@@ -106,6 +106,112 @@ const styles = theme => ({
         boxShadow: "0 4px 4px rgba(0, 0, 0, 0.08)",
     },
 
+    // SmartShot course & lesson cards (based on the earlier SmartShot design)
+    pageHeader: {
+        padding: theme.spacing(5, 0, 3),
+        [theme.breakpoints.down('xs')]: { padding: theme.spacing(3, 0, 2) },
+    },
+    pageTitle: {
+        fontWeight: 700,
+        fontSize: '2rem',
+        color: '#0D3A28',
+        margin: 0,
+        [theme.breakpoints.down('xs')]: { fontSize: '1.6rem' },
+    },
+    pageSubtitle: {
+        color: '#5B6B63',
+        fontSize: '1.05rem',
+        marginTop: theme.spacing(1),
+    },
+    sectionLabel: {
+        fontWeight: 600,
+        fontSize: '0.8rem',
+        letterSpacing: '0.08em',
+        textTransform: 'uppercase',
+        color: '#5B6B63',
+        margin: theme.spacing(4, 0, 2),
+    },
+    smartCard: {
+        position: 'relative',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        textAlign: 'left',
+        overflow: 'hidden',
+        backgroundColor: '#FFFFFF',
+        border: '1px solid #E2E8E4',
+        borderRadius: 16,
+        boxShadow: '0 1px 3px rgba(16, 24, 40, 0.06), 0 1px 2px rgba(16, 24, 40, 0.04)',
+        cursor: 'pointer',
+        transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease',
+        '&:hover': {
+            transform: 'translateY(-4px)',
+            boxShadow: '0 12px 24px rgba(13, 58, 40, 0.14)',
+            borderColor: '#C9D8CF',
+        },
+        '&:focus-visible': {
+            outline: '3px solid #1F7580',
+            outlineOffset: 2,
+        },
+    },
+    smartCardStrip: {
+        height: 6,
+        width: '100%',
+        flexShrink: 0,
+    },
+    smartCardBody: {
+        flexGrow: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        padding: theme.spacing(3, 3, 1),
+    },
+    smartCardTitle: {
+        fontWeight: 700,
+        fontSize: '1.2rem',
+        lineHeight: 1.3,
+        color: '#1A2B22',
+        margin: 0,
+        paddingRight: theme.spacing(4),
+    },
+    smartCardText: {
+        color: '#5B6B63',
+        fontSize: '0.92rem',
+        lineHeight: 1.5,
+        marginTop: theme.spacing(1),
+        flexGrow: 1,
+    },
+    smartCardMeta: {
+        color: '#7A8A82',
+        fontSize: '0.8rem',
+        fontWeight: 600,
+        marginTop: theme.spacing(2),
+    },
+    smartCardActions: {
+        padding: theme.spacing(2, 3, 3),
+    },
+    smartCardButton: {
+        width: '100%',
+        borderRadius: 10,
+        textTransform: 'none',
+        fontWeight: 600,
+    },
+    smartCardCorner: {
+        position: 'absolute',
+        top: theme.spacing(2),
+        right: theme.spacing(1),
+        color: '#5B6B63',
+    },
+    textLink: {
+        background: 'none',
+        border: 'none',
+        padding: 0,
+        color: '#1F7580',
+        fontWeight: 600,
+        fontSize: '0.95rem',
+        cursor: 'pointer',
+        '&:hover': { textDecoration: 'underline' },
+    },
+
     // Problem
     prompt: {
         marginLeft: 0,
@@ -168,7 +274,7 @@ const styles = theme => ({
             border: "1px solid #000000",
         },
         '&:focus-within': {
-            border: "2px solid #3f51b5",
+            border: "2px solid #1F7580",
         },
         height: 50,
         width: '100%',

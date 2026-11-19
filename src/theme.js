@@ -11,7 +11,7 @@ let theme = createTheme({
       main: '#FFD900', //yellow
     }, 
     background: {
-      default: '#F6F8FA', //light blue-white
+      default: '#F4F6F3', //soft warm off-white
     },
     text: {
       primary: '#1a1a1a',

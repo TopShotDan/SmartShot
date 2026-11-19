@@ -124,10 +124,18 @@ const getNormalizedMastery = (mastery, lesson) => {
 };
 // Synthetic Office Hours lesson: per-course via coursePlans `office_hours: true`.
 // Authored lessons with chat_display_mode "Full" are independent of that field.
+// SmartShot: without an AI server (REACT_APP_AI_AGENT_URL), hide the AI Tutor everywhere
+// and drop chat-only lessons, so students never see a chat button that can't work.
+const AI_ENABLED = !!(process.env.REACT_APP_AI_AGENT_URL || "").trim();
 const coursePlans = courses.map((course) => {
-    const lessons = [...(course.lessons || [])];
-    if (courseHasOfficeHours(course)) {
+    let lessons = [...(course.lessons || [])];
+    if (AI_ENABLED && courseHasOfficeHours(course)) {
         lessons.push(buildOfficeHoursLesson(course));
+    }
+    if (!AI_ENABLED) {
+        lessons = lessons
+            .filter((lesson) => lesson.chat_display_mode !== "Full")
+            .map((lesson) => ({ ...lesson, chat_display_mode: "Off" }));
     }
     return { ...course, lessons };
 });

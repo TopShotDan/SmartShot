@@ -3,7 +3,8 @@ import { _coursePlansNoEditor } from "../config/config.js";
 import { isOfficeHoursLesson } from "../util/officeHours.js";
 import Grid from "@material-ui/core/Grid";
 
-import GeometryIcon from "../assets/TOC-icon.svg";
+import CourseIcon from "../assets/LogoCrest.png";
+import { getCourseDisplayName } from "../config/smartshotCourses.js";
 import { CircularProgress, Box, Typography, makeStyles } from '@material-ui/core';
 
 import {Accordion, AccordionSummary, AccordionDetails, typography} from "@material-ui/core";
@@ -312,13 +313,13 @@ const TableOfContents = ({
           }}
         >
           <img
-            src={GeometryIcon}
-            alt="Lesson Icon Symbol Geometry"
-            style={{ width: 40, height: 40, marginTop: 8, flexShrink: 0 }}
+            src={CourseIcon}
+            alt=""
+            style={{ height: 40, width: "auto", flexShrink: 0 }}
           />
 
-          <div style={{ fontWeight: 600, flex: 1, minWidth: 0, overflow: "hidden", textOverflow: "ellipsis" }}>
-            {courseName}
+          <div style={{ fontWeight: 700, color: "#0D3A28", flex: 1, minWidth: 0, overflow: "hidden", textOverflow: "ellipsis" }}>
+            {getCourseDisplayName(courseName)}
           </div>
 
           <div style={{ flexShrink: 0 }}>
@@ -399,7 +400,7 @@ const TableOfContents = ({
                         marginLeft: "24px",
                         marginRight: isSelected ? "-16px" : "24px",
                         cursor: "pointer",
-                        backgroundColor: isSelected ? "#E9F4FB" : "#ffffff",
+                        backgroundColor: isSelected ? "#E8F1EC" : "#ffffff",
                         borderLeft: isSelected ? "4px solid #124D36" : "4px solid #EBEFF2",
                         fontWeight: isSelected ? 600 : 400,
                         color: isSelected ? "#124D36" : "#4A4E58",

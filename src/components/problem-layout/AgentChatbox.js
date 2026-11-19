@@ -48,8 +48,8 @@ const CHAT_THEME = {
     primary: '#124D36',
     primaryDark: '#0D3A28',
     accent: '#ffc300',
-    pale: '#a3c5de',
-    surface: '#eef4fa',
+    pale: '#A9CDB8',
+    surface: '#EDF4EF',
 };
 
 const VISION_IMAGE_MIME_TYPES = new Set([
@@ -524,7 +524,7 @@ const styles = (theme) => ({
         },
     },
     officeHoursUserBubble: {
-        backgroundColor: '#d7e8f4',
+        backgroundColor: '#D6E8DD',
         color: '#1f2933',
         boxShadow: 'none',
         borderRadius: 18,
@@ -536,7 +536,7 @@ const styles = (theme) => ({
     officeHoursInput: {
         flexShrink: 0,
         width: '100%',
-        backgroundColor: '#eef4fa',
+        backgroundColor: '#EDF4EF',
         borderTop: 'none',
         padding: '8px 0 20px',
         boxSizing: 'border-box',

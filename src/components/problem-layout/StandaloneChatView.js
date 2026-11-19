@@ -9,7 +9,7 @@ const styles = () => ({
         height: '100%',
         minHeight: 0,
         width: '100%',
-        background: '#eef4fa',
+        background: '#EDF4EF',
     },
     chatWrap: {
         flex: 1,

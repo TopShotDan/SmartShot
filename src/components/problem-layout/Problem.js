@@ -1271,8 +1271,8 @@ class Problem extends React.Component {
         const showHintCardChrome = isHintPortalOpen || hintPromoVisible;
 
         const hintThemePrimaryDark = "#0D3A28";
-        const hintThemeSurface = "#eef4fa";
-        const hintThemePale = "#a3c5de";
+        const hintThemeSurface = "#EDF4EF";
+        const hintThemePale = "#A9CDB8";
         const hintThemeAccent = "#EF9F27";
         const hintThemeAccentSoft = "#FAEEDA";
         const hintThemeAccentHover = "#F5DBA7";
@@ -1517,7 +1517,7 @@ class Problem extends React.Component {
 
                                 <div
                                     style = {{
-                                        backgroundColor: "#EBF4FA",
+                                        backgroundColor: "#EDF4EF",
                                         padding: 20
                                     }}
                                 >

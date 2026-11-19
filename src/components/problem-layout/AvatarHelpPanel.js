@@ -24,7 +24,7 @@ const styles = (theme) => ({
         textTransform: 'none',
         fontSize: 16,
         '&:hover': {
-            backgroundColor: '#eef4fa',
+            backgroundColor: '#EDF4EF',
             borderColor: '#124D36',
         },
     },
