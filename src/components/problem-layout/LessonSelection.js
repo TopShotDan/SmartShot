@@ -45,7 +45,6 @@ class LessonSelection extends React.Component {
         this.state = {
             preparedRemoveProgress: false,
             removedProgress: false,
-            showAllCourses: false,
         }
     }
 
@@ -136,12 +135,11 @@ class LessonSelection extends React.Component {
 
     renderCourses() {
         const { classes, translate } = this.props;
+        // config.js already limits the app to the featured courses; show them in FEATURED_COURSES order.
         const indexed = this.coursePlans.map((course, i) => ({ course, i }));
         const featured = FEATURED_COURSES
             .map((f) => indexed.find(({ course }) => course.courseName === f.courseName))
             .filter(Boolean);
-        const others = indexed.filter(({ course }) => !featured.some((f) => f.course === course));
-        // If none of the featured courses exist, show everything.
         const main = featured.length > 0 ? featured : indexed;
 
         return <>
@@ -161,22 +159,6 @@ class LessonSelection extends React.Component {
             <Grid container spacing={3}>
                 {main.map(({ course, i }) => this.renderCourseCard(course, i))}
             </Grid>
-
-            {featured.length > 0 && others.length > 0 && <>
-                <Box mt={4} textAlign="center">
-                    <button type="button" className={classes.textLink}
-                            aria-expanded={this.state.showAllCourses}
-                            onClick={() => this.setState((s) => ({ showAllCourses: !s.showAllCourses }))}>
-                        {this.state.showAllCourses ? 'Hide other courses' : `Browse all courses (${others.length} more)`}
-                    </button>
-                </Box>
-                {this.state.showAllCourses && <>
-                    <div className={classes.sectionLabel}>More courses</div>
-                    <Grid container spacing={3}>
-                        {others.map(({ course, i }) => this.renderCourseCard(course, i))}
-                    </Grid>
-                </>}
-            </>}
         </>;
     }
 
@@ -273,11 +255,20 @@ class LessonSelection extends React.Component {
                     </Box>
                 </Box>
 
-                <footer>
-                    <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-                        <div style={{ marginLeft: 20, fontSize: 16 }}>
-                            {SHOW_COPYRIGHT && <>© {new Date().getFullYear()} {SITE_NAME}</>}
-                        </div>
+                <footer style={{ backgroundColor: '#FFF7D8', padding: '8px 16px 24px', textAlign: 'center',
+                                 fontSize: '0.78rem', lineHeight: 1.6, color: '#5B6B63' }}>
+                    {SHOW_COPYRIGHT && <div>© {new Date().getFullYear()} {SITE_NAME}</div>}
+                    <div>
+                        {SITE_NAME} by <a href="https://topshotprep.com" target="_blank" rel="noreferrer"
+                                          style={{ color: '#1F7580', fontWeight: 600 }}>Top Shot Prep</a>.
+                        Built on the open-source{' '}
+                        <a href="https://www.oatutor.io/" target="_blank" rel="noreferrer" style={{ color: 'inherit' }}>OATutor</a>{' '}
+                        project (CAHL Research Lab, UC Berkeley; MIT License).
+                        Practice problems adapted from{' '}
+                        <a href="https://openstax.org/" target="_blank" rel="noreferrer" style={{ color: 'inherit' }}>OpenStax</a>,
+                        with hints by the OATutor Project, under{' '}
+                        <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer" style={{ color: 'inherit' }}>CC BY 4.0</a>.
+                        Not affiliated with UC Berkeley.
                     </div>
                 </footer>
             </>

@@ -4,7 +4,8 @@ import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core";
 import logoSrc from "../assets/LogoCrest.png";
 
-// SmartShot banner logo: crest + name + "Powered by OATutor", made for the green top bar.
+// SmartShot banner logo: crest + name + "Powered by Top Shot Prep", made for the green top bar.
+// (OATutor / OpenStax credit lives on the About page and in the home page footer.)
 const useStyles = makeStyles({
     brand: {
         display: "flex",
@@ -62,7 +63,7 @@ function BrandLogoNav({ isPrivileged = false, noLink = false }) {
         <img src={logoSrc} alt="" className={classes.logo} />
         <div className={classes.titleBlock}>
             <span className={classes.name}>{SITE_NAME}</span>
-            <span className={classes.subtitle}>Powered by OATutor</span>
+            <span className={classes.subtitle}>Powered by Top Shot Prep</span>
         </div>
     </>
 

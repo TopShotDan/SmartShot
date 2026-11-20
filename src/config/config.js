@@ -5,6 +5,7 @@ import { calculateSemester } from "../util/calculateSemester.js";
 import { SITE_NAME } from "@common/global-config";
 import { cleanObjectKeys } from "../util/cleanObject";
 import { buildOfficeHoursLesson, courseHasOfficeHours } from "../util/officeHours.js";
+import { FEATURED_COURSES } from "./smartshotCourses.js";
 
 const ThemeContext = React.createContext(0);
 const SITE_VERSION = "2.0";
@@ -127,7 +128,11 @@ const getNormalizedMastery = (mastery, lesson) => {
 // SmartShot: without an AI server (REACT_APP_AI_AGENT_URL), hide the AI Tutor everywhere
 // and drop chat-only lessons, so students never see a chat button that can't work.
 const AI_ENABLED = !!(process.env.REACT_APP_AI_AGENT_URL || "").trim();
-const coursePlans = courses.map((course) => {
+// SmartShot: only the featured courses exist in the app (other courses can't be opened, even by URL).
+const featuredCourses = courses.filter((course) =>
+    FEATURED_COURSES.some((f) => f.courseName === course.courseName)
+);
+const coursePlans = (featuredCourses.length > 0 ? featuredCourses : courses).map((course) => {
     let lessons = [...(course.lessons || [])];
     if (AI_ENABLED && courseHasOfficeHours(course)) {
         lessons.push(buildOfficeHoursLesson(course));

@@ -179,6 +179,11 @@ class Platform extends React.Component {
     this._isMounted = true;
     if (this.props.lessonID != null) {
       const lesson = findLessonById(this.props.lessonID) || findMetaLessonById(this.props.lessonID);
+      if (!lesson) {
+        // SmartShot: unknown or hidden lesson (e.g. from a course that isn't offered) -> go home
+        this.props.history?.replace("/");
+        return;
+      }
       this.selectLesson(lesson).then((_) => {});
       this.props.enterCourse?.(lesson?.courseName, this._resolveLessonLanguage(lesson));
     } else if (this.props.courseNum != null) {
