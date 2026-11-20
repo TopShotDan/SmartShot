@@ -4,9 +4,9 @@ export const FEATURED_COURSES = [
     { courseName: 'OpenStax: Elementary Algebra', displayName: 'Algebra Fundamentals',
       description: 'Master the building blocks of algebra.', color: '#FFD900' },
     { courseName: 'OpenStax: Pre-Calculus', displayName: 'Pre-Calculus',
-      description: 'Prepare for calculus with essential concepts.', color: '#E4F0DD' },
+      description: 'Prepare for calculus with essential concepts.', color: '#034455' },
     { courseName: 'OpenStax: Introductory Stats', displayName: 'Statistics',
-      description: 'Learn to analyze and interpret data.', color: '#DCEEF0' },
+      description: 'Learn to analyze and interpret data.', color: '#028D72' },
     { courseName: 'OpenStax: Calculus Volume 1', displayName: 'Calculus',
       description: 'Explore limits, derivatives, and integrals.', color: '#124D36' },
 ];
