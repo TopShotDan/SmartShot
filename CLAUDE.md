@@ -5,16 +5,17 @@ SmartShot is Top Shot Prep's free adaptive math practice site, built on the open
 Owner: Top Shot Prep (GitHub `TopShotDan`). The owner is new to coding: explain in plain
 language, give exact click paths, and do the technical work rather than handing over commands.
 
-## Branches and deployment — read first
+## This repo is ONLY the free public site
 
-| Branch | Purpose | Where it goes |
-|---|---|---|
-| `main` | The live free version (4 courses). Keep it stable: only small, verified fixes. | Vercel project `smart-shot` → https://smartshot.topshotprep.com (auto-deploys on push) |
-| `next` | The bigger "real" SmartShot. Big or experimental work goes here (or on feature branches off `next`). | Vercel preview URL per push (not the live site) |
-
+- `main` = the live free version (4 courses, no login). Vercel project `smart-shot` →
+  https://smartshot.topshotprep.com (auto-deploys on push). Keep it stable: only small, verified fixes.
+- This repo is a fork of a public repo, so it is **public**. Never put purchased-book content, private
+  student data, or the paid product here.
+- The bigger private app (tutor/student/parent logins, ACT question banks, reports) is a **separate private
+  repo**: `TopShotDan/smartshot-platform`, local folder `C:\Users\danny\Github\smartshot-platform`, at
+  `app.topshotprep.com`. Work on it there, not here.
 - Remotes: `origin` = `TopShotDan/SmartShot` (the fork), `upstream` = `CAHLR/OATutor` (the lab).
 - Never force-push, and never push to `main` without the owner's OK.
-- Plan / roadmap for the bigger version: `docs/ROADMAP.md` (create it with the owner if missing).
 
 ## Running it locally (Windows)
 
